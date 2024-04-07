@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,31 +20,47 @@ private Connection connection;
 		this.connection = DatabaseConnection.getConnection();
 	}
 	
-	public boolean createNewOrder(Order newOrder) {
+	public boolean createOrder(Order newOrder)
+			throws SQLIntegrityConstraintViolationException, SQLException  {
 		
 		// Query para insertar un nuevo cliente
 	    String sql = "INSERT INTO orders (client_id, description, quantity, status) " + 
 	    		     "VALUES (?, ?, ?, ?)";
 	    
 	    
-		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+		PreparedStatement statement = connection.prepareStatement(sql);
 	    	
-	    	// Inserta los datos al Query
-	        statement.setInt(1, newOrder.getClientId());
-	        statement.setString(2, newOrder.getDescription());
-	        statement.setInt(3, newOrder.getQuantity());
-	        statement.setString(4, newOrder.getStatus());
-            
-	        int rowsInserted = statement.executeUpdate();
+    	// Inserta los datos al Query
+        statement.setInt(1, newOrder.getClientId());
+        statement.setString(2, newOrder.getDescription());
+        statement.setInt(3, newOrder.getQuantity());
+        statement.setString(4, newOrder.getStatus());
+        
+        int rowsInserted = statement.executeUpdate();
+        
+        return rowsInserted > 0;
 	        
-	        return rowsInserted > 0;
-	        
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        return false;
-	    }
-	    
+
 	    	
+	}
+	
+	public boolean deleteOrder(int orderId) {
+		
+		 String sql = "DELETE FROM orders WHERE id = ?";
+		 
+		 try (PreparedStatement statement = connection.prepareStatement(sql)) {
+		    	
+		        statement.setInt(1, orderId);
+		        
+		        int rowsDeleted = statement.executeUpdate();
+		        
+		        return rowsDeleted > 0;
+		        
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		        return false;
+		    }
+		
 	}
 	
 	public List<Order> getAllOrders() {

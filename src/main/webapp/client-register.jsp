@@ -9,7 +9,7 @@
 <body>
 
 	<%
-		HttpSession s = request.getSession(false); // false para no crear una nueva si no existe
+		HttpSession s = request.getSession(false);
 	    if (session == null || s.getAttribute("userId") == null) {  
 	    	response.sendRedirect("index.jsp");
     	}
