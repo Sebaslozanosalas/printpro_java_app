@@ -52,7 +52,6 @@ public class TestController extends HttpServlet {
 	    }
 	    
 	    
-	    
 	    response.sendRedirect("index.jsp");
 		
 	}
