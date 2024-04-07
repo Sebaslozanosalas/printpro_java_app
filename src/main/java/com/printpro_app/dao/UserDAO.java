@@ -19,7 +19,8 @@ public class UserDAO {
 		this.connection = DatabaseConnection.getConnection();
 	}
 	
-	public int createNewUser(User newUser) throws SQLIntegrityConstraintViolationException, SQLException {
+	public int createNewUser(User newUser)
+			throws SQLIntegrityConstraintViolationException, SQLException {
 		
 		// Query para insertar un nuevo usuario
 	    String sql = "INSERT INTO users (username, password) " +
@@ -27,19 +28,19 @@ public class UserDAO {
 	    
 	    PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	    	
-	    	// Inserta los datos al Query
-	        statement.setString(1, newUser.getUserName());	// user_name 
-	        statement.setString(2, newUser.getPassword()); 	// password
-	        
-	        int rowsInserted = statement.executeUpdate();
-	        
-	        if (rowsInserted > 0) {
-	            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-	                if (generatedKeys.next()) {
-	                    return generatedKeys.getInt(1); // Retorna el ID generado para el nuevo usuario
-	                }
-	            }
-	        }
+    	// Inserta los datos al Query
+        statement.setString(1, newUser.getUserName());	// user_name 
+        statement.setString(2, newUser.getPassword()); 	// password
+        
+        int rowsInserted = statement.executeUpdate();
+        
+        if (rowsInserted > 0) {
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1); // Retorna el ID generado para el nuevo usuario
+                }
+            }
+        }
 	    
 	    return -1;
 	    

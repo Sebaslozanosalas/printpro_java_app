@@ -25,12 +25,11 @@ public class Order {
 		this.updatedAt = updatedAt;
 	}
 	
-	public Order(int clientId, String description,int quantity, String status) {
+	public Order(int clientId, String description,int quantity) {
 		super();
 		this.clientId = clientId;
 		this.description = description;
 		this.quantity = quantity;
-		this.status = status;
 	}
 
 
