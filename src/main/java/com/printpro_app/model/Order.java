@@ -24,6 +24,14 @@ public class Order {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
+	public Order(int clientId, String description,int quantity, String status) {
+		super();
+		this.clientId = clientId;
+		this.description = description;
+		this.quantity = quantity;
+		this.status = status;
+	}
 
 
 	public int getId() {
@@ -94,10 +102,14 @@ public class Order {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", clientId=" + clientId + ", description=" + description + ", quantity=" + quantity
+				+ ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
 	
-	
-	
-	
-	
+
 
 }
