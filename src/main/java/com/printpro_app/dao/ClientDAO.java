@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +44,26 @@ public class ClientDAO {
 	        e.printStackTrace();
 	        return false;
 	    }
-	    
+	     	
+	}
+	
+	
+	public boolean deleteClient(int clientId) {
+		
+	    String sql = "DELETE FROM clients WHERE id = ?";
+
+	    try (PreparedStatement statement = connection.prepareStatement(sql)) {
 	    	
+	        statement.setInt(1, clientId);
+	        
+	        int rowsDeleted = statement.executeUpdate();
+	        
+	        return rowsDeleted > 0;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
 	
 	
@@ -71,7 +88,9 @@ public class ClientDAO {
 											   resultSet.getString("last_name"),
 											   resultSet.getString("email"),
 											   resultSet.getString("phone"),
-											   resultSet.getString("address")
+											   resultSet.getString("address"),
+											   resultSet.getTimestamp("created_at").toLocalDateTime(),
+											   resultSet.getTimestamp("updated_at").toLocalDateTime()
 											   );
 					
 					
@@ -85,5 +104,8 @@ public class ClientDAO {
 	    
 		return records;
 	}
+
+	
+	
 
 }

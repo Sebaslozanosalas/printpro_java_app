@@ -1,5 +1,7 @@
 package com.printpro_app.model;
 
+import java.time.LocalDateTime;
+
 public class Client {
 	
 	private int id;
@@ -8,18 +10,24 @@ public class Client {
 	private String phone;
 	private String email;
 	private String address;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 	
 	
-	public Client(int id, String fisrtName, String lastName,
-				String email, String phone, String address) {
-		super();
-		this.id = id;
-		this.firstName = fisrtName;
-		this.lastName = lastName;
-		this.phone = phone;
-		this.email = email;
-		this.address = address;
-	}
+	public Client(int id, String fisrtName, String lastName, String email,
+			String phone, String address, LocalDateTime createdAt, LocalDateTime updatedAt) {
+	super();
+	this.id = id;
+	this.firstName = fisrtName;
+	this.lastName = lastName;
+	this.phone = phone;
+	this.email = email;
+	this.address = address;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
+}
+	
+	
 	
 	public Client(String fisrtName, String lastName, String email,
 			String phone, String address) {
@@ -90,12 +98,42 @@ public class Client {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", fisrtName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
-				+ ", email=" + email + ", address=" + address + "]";
+		return "Client [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
+				+ ", email=" + email + ", address=" + address + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]";
 	}
+
+
+	
 	
 	
 }
