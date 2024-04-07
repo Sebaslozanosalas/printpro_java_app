@@ -19,5 +19,12 @@
 	<br>
 	<a class="navbar-brand" href="orders.jsp">Gestionar ordenes</a>
 	
+	<%
+		HttpSession s = request.getSession(false); // false para no crear una nueva si no existe
+	    if (session == null || s.getAttribute("userId") == null) {  
+	    	response.sendRedirect("index.jsp");
+    	}
+	%>
+	
 </body>
 </html>

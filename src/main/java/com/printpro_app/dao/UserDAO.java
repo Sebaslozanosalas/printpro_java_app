@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import com.printpro_app.model.User;
@@ -18,13 +19,13 @@ public class UserDAO {
 		this.connection = DatabaseConnection.getConnection();
 	}
 	
-	public int createNewUser(User newUser) {
+	public int createNewUser(User newUser) throws SQLIntegrityConstraintViolationException, SQLException {
 		
 		// Query para insertar un nuevo usuario
 	    String sql = "INSERT INTO users (username, password) " +
 	    			 "VALUES (?, ?)";
 	    
-	    try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+	    PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	    	
 	    	// Inserta los datos al Query
 	        statement.setString(1, newUser.getUserName());	// user_name 
@@ -39,9 +40,6 @@ public class UserDAO {
 	                }
 	            }
 	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
 	    
 	    return -1;
 	    

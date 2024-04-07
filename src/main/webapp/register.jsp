@@ -18,8 +18,8 @@
 	
 	<form action="register" method="post" class="mt-4">
         <div class="form-group">
-            <label for="user">Usuario:</label>
-            <input type="text" id="user" name="user" class="form-control" required>
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="password">Contraseña:</label>
@@ -28,6 +28,12 @@
         <br>
         <button type="submit" class="btn btn-primary w-100">Registrarse</button>
     </form>
+    
+    <% if (request.getAttribute("error") != null) { %>
+	      <div class="alert alert-danger" role="alert">
+	          <%= request.getAttribute("error") %>
+	      </div>
+    <% } %>
 
 </body>
 </html>
