@@ -1,4 +1,3 @@
-<%@ page import="com.printpro_app.util.DatabaseConnection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,28 +8,17 @@
 </head>
 <body>
 
-	<%
-    java.sql.Connection conn = null;
-    try {
-        conn = DatabaseConnection.getConnection();
-        if (conn != null) {
-            out.println("Conexión a la base de datos exitosa!");
-        } else {
-            out.println("Conexión fallida!");
-        }
-    } catch (Exception e) {
-        out.println("Excepción al obtener la conexión: " + e.getMessage());
-        e.printStackTrace();
-    } finally {
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (Exception e) {
-                out.println("Error al cerrar la conexión: " + e.getMessage());
-            }
-        }
-    }
-	%>
+	<form action="test" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="user">Usuario:</label>
+            <input type="text" id="user" name="user" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
 
 </body>
 </html>
