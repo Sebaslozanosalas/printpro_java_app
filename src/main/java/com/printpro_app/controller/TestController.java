@@ -5,10 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-import com.printpro_app.dao.UserDAO;
-import com.printpro_app.model.User;
+import java.io.IOException;
 
 @WebServlet("/test")
 public class TestController extends HttpServlet {
@@ -23,8 +21,11 @@ public class TestController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// Crea variables extrayendo los datos del request
-		String userName = request.getParameter("user");
-	    String password = request.getParameter("password");
+		String firstName = request.getParameter("firstName");
+	    String lastName = request.getParameter("lastName");
+	    String email = request.getParameter("email");
+	    String phone = request.getParameter("phone");
+	    String address = request.getParameter("address");
 	    
 	    
 	    response.sendRedirect("index.jsp");

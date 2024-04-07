@@ -3,7 +3,7 @@ package com.printpro_app.model;
 public class Client {
 	
 	private int id;
-	private String fisrtName;
+	private String firstName;
 	private String lastName;
 	private String phone;
 	private String email;
@@ -11,20 +11,20 @@ public class Client {
 	
 	
 	public Client(int id, String fisrtName, String lastName,
-				String phone, String email, String address) {
+				String email, String phone, String address) {
 		super();
 		this.id = id;
-		this.fisrtName = fisrtName;
+		this.firstName = fisrtName;
 		this.lastName = lastName;
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
 	}
 	
-	public Client(String fisrtName, String lastName, String phone,
-			String email, String address) {
+	public Client(String fisrtName, String lastName, String email,
+			String phone, String address) {
 		super();
-		this.fisrtName = fisrtName;
+		this.firstName = fisrtName;
 		this.lastName = lastName;
 		this.phone = phone;
 		this.email = email;
@@ -42,13 +42,13 @@ public class Client {
 	}
 
 
-	public String getFisrtName() {
-		return fisrtName;
+	public String getFirstName() {
+		return firstName;
 	}
 
 
-	public void setFisrtName(String fisrtName) {
-		this.fisrtName = fisrtName;
+	public void setFirstName(String fisrtName) {
+		this.firstName = fisrtName;
 	}
 
 
@@ -90,10 +90,12 @@ public class Client {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", fisrtName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
+				+ ", email=" + email + ", address=" + address + "]";
+	}
 	
 	
 }
