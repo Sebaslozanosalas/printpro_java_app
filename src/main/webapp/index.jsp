@@ -1,26 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>PrintPro - Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintPro - Inicio</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-	<a class="navbar-brand" href="index.jsp">Home</a>
-	<a class="nav-link" href="login.jsp">Iniciar sesion</a>
-	<a class="nav-link" href="register.jsp">Registrarse</a>
-	
+	<!-- Redirige al usuario si ya inicio sesión -->
 	<%
-	    HttpSession s = request.getSession(false); // false para no crear una nueva si no existe
-	    if (session == null || s.getAttribute("userId") == null) {  
-    } else {
-        // Existe userId, imprimir el ID del usuario
-        response.sendRedirect("welcome.jsp");
-	
-	    }
-	%>
+        HttpSession s = request.getSession(false);
+        if (s != null && s.getAttribute("userId") != null) {  
+            response.sendRedirect("welcome.jsp");
+        }
+    %>
 
+    <!-- Barra de navegación con Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.jsp">PrintPro</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.jsp">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.jsp">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
