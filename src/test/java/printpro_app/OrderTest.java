@@ -1,4 +1,4 @@
-package com.printpro_app.test;
+package printpro_app;
 
 import com.printpro_app.model.Order;
 import org.junit.Test;
