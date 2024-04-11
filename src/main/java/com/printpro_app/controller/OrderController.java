@@ -10,7 +10,7 @@ import java.io.IOException;
 import com.printpro_app.service.OrderService;
 import com.printpro_app.model.Order;
 
-@WebServlet(name = "OrderController", urlPatterns = {"/delete-order", "/create-order"})
+@WebServlet(name = "OrderController", urlPatterns = {"/delete-order", "/create-order", "/edit-order"})
 public class OrderController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -49,6 +49,9 @@ public class OrderController extends HttpServlet {
 	        case "/create-order":
 	        	createOrder(request, response);
 	            break;
+	        case "/edit-order":
+	        	editOrder(request, response);
+	            break;
 		}
 		
 	}
@@ -86,6 +89,27 @@ public class OrderController extends HttpServlet {
     	} else {
     		String errorMessage = orderService.getErrorMessage();
     		request.setAttribute("error", errorMessage);
+	        request.getRequestDispatcher("orders.jsp").forward(request, response);
+    	}
+
+    }
+	
+	private void editOrder(HttpServletRequest request, HttpServletResponse response)
+    		throws IOException, ServletException {
+    	
+    	int orderId = Integer.parseInt(request.getParameter("order_id"));
+    	String description = request.getParameter("description");
+    	int quantity = Integer.parseInt(request.getParameter("quantity"));
+    	String status= request.getParameter("status");
+    	
+    	Order order = new Order(orderId, description, quantity, status);
+
+    	boolean success = orderService.editOrder(order);
+    	
+    	if (success) {
+    		response.sendRedirect("orders.jsp");
+    	} else {
+    		request.setAttribute("error", "Error al editar la orden.");
 	        request.getRequestDispatcher("orders.jsp").forward(request, response);
     	}
 

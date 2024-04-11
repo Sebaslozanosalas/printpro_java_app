@@ -40,6 +40,11 @@ public class OrderService {
 	}
 	
 	
+	public boolean editOrder(Order order) {
+		return orderDAO.editOrder(order);
+	}
+	
+	
 	public List<Order> getAllOrders(){
 		return orderDAO.getAllOrders();
 	}
