@@ -1,7 +1,5 @@
 # PrintPro App Documentation
 
-# PrintPro App Documentation
-
 ## Overview
 
 La necesidad de PrintPro App surgió del crecimiento de PrintPro Studio, que utilizaba Excel para gestionar clientes, ventas, inventarios y producción, un método que se estaba volviendo insostenible. Para apoyar su expansión y mejorar la eficiencia, decidimos desarrollar una plataforma enfocada en la administración de clientes y pedidos. Esta solución permitirá al equipo de PrintPro Studio manejar información de clientes y el flujo de pedidos de forma más efectiva, brindando una visión clara de las operaciones de producción en curso, pendientes y completadas.
@@ -124,7 +122,7 @@ CREATE TABLE IF NOT EXISTS orders (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 );
-
+```
 
 ## Contribution
 
