@@ -6,11 +6,25 @@ public class Order {
 	
 	private int id;
 	private int clientId;
+	private String clientName;
 	private String description;
 	private int quantity;
 	private String status;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+
+	public Order(int id, int clientId, String clientName, String description,int quantity,
+			String status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+		super();
+		this.id = id;
+		this.clientId = clientId;
+		this.clientName = clientName;
+		this.description = description;
+		this.quantity = quantity;
+		this.status = status;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 	
 	
 	public Order(int id, int clientId, String description,int quantity,
@@ -50,6 +64,16 @@ public class Order {
 
 	public void setClientId(int clientId) {
 		this.clientId = clientId;
+	}
+	
+
+	public String getClientName() {
+		return clientName;
+	}
+	
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 
 

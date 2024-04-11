@@ -79,8 +79,9 @@
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
+                    <th>ID Orden</th>
                     <th>ID Cliente</th>
+                    <th>Nombre Cliente</th>
                     <th>Descripción</th>
                     <th>Cantidad</th>
                     <th>Estado</th>
@@ -95,6 +96,7 @@
                     <tr>
                         <td><%= order.getId() %></td>
                         <td><%= order.getClientId() %></td>
+                        <td><%= order.getClientName() %></td>
                         <td><%= order.getDescription() %></td>
                         <td><%= order.getQuantity() %></td>
                         <td><%= order.getStatus() %></td>
