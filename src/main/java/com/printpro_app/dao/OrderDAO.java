@@ -68,7 +68,23 @@ private Connection connection;
 		List<Order> records = new ArrayList<>();
 		
 		// Query para retraer todos los registrios ordenados 
-	    String sql = "SELECT * FROM orders ORDER BY id DESC";
+	    String sql = 
+			"""
+				select
+					o.id,
+					o.client_id,
+					concat(c.first_name, " ", c.last_name) as client_name,
+					o.description,
+					o.quantity,
+					o.status,
+					o.created_at,
+					o.updated_at
+				from orders o
+				left join clients c
+					on o.client_id = c.id
+				order by
+					o.created_at desc
+				""";
 		
 	    try (PreparedStatement statement = connection.prepareStatement(sql)) {
             
@@ -81,6 +97,7 @@ private Connection connection;
 					// Crear un objeto Client para guardar los datos en la lista records
 					Order record = new Order(resultSet.getInt("id"),
 											   resultSet.getInt("client_id"),
+											   resultSet.getString("client_name"),
 											   resultSet.getString("description"),
 											   resultSet.getInt("quantity"),
 											   resultSet.getString("status"),
