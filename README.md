@@ -126,8 +126,29 @@ CREATE TABLE IF NOT EXISTS orders (
 
 ## Contribution
 
-1. **User Contribution Guide**: Sigue nuestra guía de contribución para entender el proceso de colaboración.
-2. **Pull Requests**: Asegúrate de seguir los pasos específicos: clona el repositorio, crea un nuevo branch, realiza tus cambios, empuja el branch y crea un pull request.
+PrintPro App es un proyecto de código abierto. Aquí te explicamos cómo puedes contribuir:
+
+1. **Fork el Repositorio**: Dado que PrintPro App es un repositorio público, puedes hacer fork del proyecto para comenzar a trabajar en tus propias mejoras. Esto crea una copia personal en tu cuenta de GitHub que puedes modificar.
+
+2. **Clona el Repositorio**: Después de hacer fork del proyecto, puedes clonar tu versión a tu máquina local para comenzar a trabajar en los cambios.
+
+3. **Crea un Nuevo Branch**: Antes de hacer cualquier cambio, crea un nuevo branch en tu fork. Esto ayuda a mantener organizado el trabajo y asegura que la rama principal (`main` o `master`) permanezca estable y libre de código en desarrollo.
+
+4. **Haz tus Cambios**: Implementa tus cambios y mejoras en tu branch. Asegúrate de adherirte a las convenciones de código y a las prácticas recomendadas del proyecto.
+
+5. **Escribe y Ejecuta Pruebas**: Si estás agregando una nueva funcionalidad o reparando un bug, escribe pruebas unitarias para acompañar tus cambios. Asegúrate de que todas las pruebas pasen antes de proceder.
+
+6. **Documenta tus Cambios**: Actualiza la documentación si estás introduciendo cambios en la funcionalidad o en la forma de usar la aplicación.
+
+7. **Commit tus Cambios**: Haz commits de tus cambios con mensajes de commit claros y descriptivos. Esto ayuda a los revisores a entender qué has hecho y por qué.
+
+8. **Push a GitHub**: Empuja tus cambios al branch en tu fork en GitHub.
+
+9. **Abre un Pull Request (PR)**: En el repositorio de PrintPro App, abre un pull request desde tu branch. En la descripción del PR, explica los cambios y referencias cualquier issue relacionado.
+
+10. **Revisión y Merge**: Uno de los mantenedores revisará tu PR. Si hay comentarios o sugerencias, te pedirán que hagas modificaciones. Una vez que tu PR sea aprobado, será fusionado al repositorio principal.
+
+
 
 ## Roadmap
 
