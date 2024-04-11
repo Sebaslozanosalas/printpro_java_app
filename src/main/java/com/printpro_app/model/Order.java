@@ -39,6 +39,16 @@ public class Order {
 		this.updatedAt = updatedAt;
 	}
 	
+	
+	public Order(int id, String description, int quantity, String status) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.quantity = quantity;
+		this.status = status;
+	}
+	
+	
 	public Order(int clientId, String description,int quantity) {
 		super();
 		this.clientId = clientId;

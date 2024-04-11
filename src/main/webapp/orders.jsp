@@ -44,6 +44,11 @@
             <a class="btn btn-success" href="order-create.jsp">Nueva orden</a>
         </div>
         
+        <!-- Botón para editar una orden -->
+        <div class="text-right mb-3">
+            <a class="btn btn-success" href="order-edit.jsp">Editar orden</a>
+        </div>
+        
         <!-- Formulario para eliminar una orden -->
         <div class="row">
             <div class="col-md-6 offset-md-3">

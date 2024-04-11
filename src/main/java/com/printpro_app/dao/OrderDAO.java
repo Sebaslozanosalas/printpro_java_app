@@ -63,6 +63,37 @@ private Connection connection;
 		
 	}
 	
+	public boolean editOrder(Order order) {
+		
+		 String sql =
+				"""
+			 		UPDATE orders
+					SET
+						description = ?,
+					    quantity = ?,
+					    status = ?
+					WHERE id = ?
+		 		""";
+		 
+		 try (PreparedStatement statement = connection.prepareStatement(sql)) {
+		    	
+		        statement.setString(1, order.getDescription());
+			 	statement.setInt(2, order.getQuantity());
+		        statement.setString(3, order.getStatus());
+		        statement.setInt(4, order.getId());
+		        
+		        
+		        int rowsUpdated = statement.executeUpdate();
+		        
+		        return rowsUpdated > 0;
+		        
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		        return false;
+		    }
+		
+	}
+	
 	public List<Order> getAllOrders() {
 		
 		List<Order> records = new ArrayList<>();
@@ -83,7 +114,7 @@ private Connection connection;
 				left join clients c
 					on o.client_id = c.id
 				order by
-					o.created_at desc
+					o.updated_at desc
 				""";
 		
 	    try (PreparedStatement statement = connection.prepareStatement(sql)) {
